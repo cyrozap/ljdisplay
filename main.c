@@ -8,12 +8,12 @@
 
 //PJL string to send something to the display. The data sent in between the
 //'pre' and 'post' is displayed on the HPLJs display.
-const char pre[] PROGMEM="\033%-12345X@PJL RDYMSG DISPLAY = \"";
-const char post[] PROGMEM="\"\r\n\033%-12345X\r\n";
+const char pre[] PROGMEM = "\033%-12345X@PJL RDYMSG DISPLAY = \"";
+const char post[] PROGMEM = "\"\r\n\033%-12345X\r\n";
 
 //Messages
 #define NO_OF_MESSAGES 18
-const char messages[NO_OF_MESSAGES][17] PROGMEM={
+const char messages[NO_OF_MESSAGES][17] PROGMEM = {
     "ben ik al opge- ",
     "ruimd? En nu dan",
     "? Owww, ik sta  ",
@@ -36,29 +36,31 @@ const char messages[NO_OF_MESSAGES][17] PROGMEM={
 
 //Simple routine to print the zero-terminated string 'data' which should be located
 //in program memory.
-void printstr(const char* data) {
+void printstr(const char *data)
+{
     char d;
     do {
-	d=pgm_read_byte(data++);
-	if (d!=0) sendbyte(d);
-    } while (d!=0);
+        d = pgm_read_byte(data++);
+        if (d != 0) sendbyte(d);
+    } while (d != 0);
 }
 
 //Main routine
-int main(void) {
+int main(void)
+{
     int x;
     int msg;
     //Init I/O
     initio();
-    while(1) {
-	//Print pre, post, message
-	printstr(pre);
-	printstr(messages[msg]);
-	printstr(post);
-	//Take the next message; wrap to 0 if we had the last
-	msg++; if (msg>=NO_OF_MESSAGES) msg=0;
-	
-	//Delay 2 seconds.
-	for (x=0; x<100; x++) _delay_ms(20);
+    while (1) {
+        //Print pre, post, message
+        printstr(pre);
+        printstr(messages[msg]);
+        printstr(post);
+        //Take the next message; wrap to 0 if we had the last
+        msg++; if (msg >= NO_OF_MESSAGES) msg = 0;
+
+        //Delay 2 seconds.
+        for (x = 0; x < 100; x++) _delay_ms(20);
     }
 }
