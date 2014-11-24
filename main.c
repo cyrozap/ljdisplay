@@ -8,12 +8,12 @@
 
 //PJL string to send something to the display. The data sent in between the
 //'pre' and 'post' is displayed on the HPLJs display.
-char pre[] PROGMEM="\033%-12345X@PJL RDYMSG DISPLAY = \"";
-char post[] PROGMEM="\"\r\n\033%-12345X\r\n";
+const char pre[] PROGMEM="\033%-12345X@PJL RDYMSG DISPLAY = \"";
+const char post[] PROGMEM="\"\r\n\033%-12345X\r\n";
 
 //Messages
 #define NO_OF_MESSAGES 18
-char messages[NO_OF_MESSAGES][17] PROGMEM={
+const char messages[NO_OF_MESSAGES][17] PROGMEM={
     "ben ik al opge- ",
     "ruimd? En nu dan",
     "? Owww, ik sta  ",
@@ -36,7 +36,7 @@ char messages[NO_OF_MESSAGES][17] PROGMEM={
 
 //Simple routine to print the zero-terminated string 'data' which should be located
 //in program memory.
-void printstr(char* data) {
+void printstr(const char* data) {
     char d;
     do {
 	d=pgm_read_byte(data++);
