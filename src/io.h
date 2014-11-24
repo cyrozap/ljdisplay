@@ -1,4 +1,4 @@
-//This program is licensed under the GPLv3; see license.txt for more info.
+//This program is licensed under the GPLv3; see COPYING for more info.
 //Copyright 2007 Sprite_tm
 
 #define F_CPU 8000000

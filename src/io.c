@@ -1,4 +1,4 @@
-//This program is licensed under the GPLv3; see license.txt for more info.
+//This program is licensed under the GPLv3; see COPYING for more info.
 //Copyright 2008 Sprite_tm
 
 #include "io.h"
