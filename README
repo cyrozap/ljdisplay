@@ -1,0 +1,6 @@
+This little program is used to cycle messages on the display of
+an HPLJ using an AVR connected to its Centronics-port.
+
+Make sure to program the AVRs fuses to run at its internal 8MHz clock.
+I used low=0xE4, high=0xDF, ext'd=0xFF
+
