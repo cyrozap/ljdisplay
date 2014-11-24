@@ -49,7 +49,7 @@ void printstr(const char *data)
 int main(void)
 {
     int x;
-    int msg;
+    int msg = 0;
     //Init I/O
     initio();
     while (1) {
