@@ -14,8 +14,8 @@ void initio(void)
 {
     //Init I/O
     DDRB = 0xff; //make data port output
-    DDRD = (1 << PSTR);
-    PORTD = (1 << PACK) | (1 << PBSY) | (1 << PSTR); //pull-ups
+    DDRD = _BV(PSTR);
+    PORTD = _BV(PACK) | _BV(PBSY) | _BV(PSTR); //pull-ups
 }
 
 
@@ -25,12 +25,12 @@ void sendbyte(char data)
     PORTB = data;
 
     //Wait until printer isn't busy anymore
-    while (PIND & (1 << PBSY)) ;
+    while (PIND & _BV(PBSY)) ;
 
     //Pulse strobe
     _delay_ms(1);
-    PORTD &= ~(1 << PSTR);
+    PORTD &= ~_BV(PSTR);
     _delay_ms(1);
-    PORTD |= (1 << PSTR);
+    PORTD |= _BV(PSTR);
     _delay_ms(1);
 }
